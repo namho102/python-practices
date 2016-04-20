@@ -1,1 +1,1 @@
-# python-practices
+# Data Science from Scratch
