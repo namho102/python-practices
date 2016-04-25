@@ -1,10 +1,12 @@
 import asyncio
+from aiohttp import ClientSession
 
-@asyncio.coroutine
-def speak_async():  
-    print('OMG asynchronicity!')
+async def hello():
+    async with ClientSession() as session:
+        async with session.get("http://httpbin.org/headers") as response:
+            response = await response.read()
+            print(response)
 
-loop = asyncio.get_event_loop()  
-loop.run_until_complete(speak_async())  
-loop.close()  
+loop = asyncio.get_event_loop()
 
+loop.run_until_complete(hello())
